@@ -149,7 +149,7 @@ summary(df)
 
 <div align="center">
 
-**$\hat{\beta}s$ and their CIs **
+**$\hat{\beta}_4s$ and their CIs **
 
 </div>
 
