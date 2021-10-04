@@ -42,8 +42,6 @@ head(df)
 
 ## grid  -------------------------------------
 grid <- expand_grid(
-  cr = par$crops,
-  yr = par$years,
   st = par$states,
   var = c(
     "CORN, GRAIN - YIELD, MEASURED IN BU / ACRE",
@@ -55,20 +53,20 @@ grid <- expand_grid(
 )
 
 ## function  -------------------------------------
-extract_nass <- function(cr, yr, st, var) {
+extract_nass <- function(st, var) {
   library(rnassqs)
   nassqs(
-    commity_desc = cr,
     source_desc = "SURVEY",
     agg_level_desc = "COUNTY",
-    year = yr,
     state_alpha = st,
     short_desc = var
-  )
+  ) %>% 
+  filter(year %in% par$years)
 }
 
 ## loop  -------------------------------------
-df <- future_pmap(.progress = T, grid, extract_nass) %>% rbindlist(use.names = T)
+plan(multisession)
+df <- future_pmap(.progress=T, grid, extract_nass) %>% rbindlist(use.names = T)
 
 
 # 2. clean -------------------------------------------------------------------
@@ -86,11 +84,12 @@ df_ya <- df %>%
   spread(var, Value)
 
 
-
 vis_miss(df_ya)
 summary(df_ya)
 
 
 # 3. export ---------------------------------------------------------------------
-#----@ output: Data/df_ya.rds @----
-saveRDS(df_ya, "Data/df_ya.rds")
+#----@ output: Data/Processed/df_ya.rds @----
+saveRDS(df_ya, "Data/Processed/df_ya.rds")
+
+

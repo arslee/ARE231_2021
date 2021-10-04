@@ -62,13 +62,13 @@ grid <- expand_grid(
 #  regression function ----------------------------------------------------
 
 reg <- function(crop, period, weight, cluster, trend, weather, id) {
-  print(y)
-  print(id)
 
   #--- regression equation ---#
   y <- paste0("log(", "y_", crop, ")")
   fml <- paste0(y, "~", weather_list[[weather]], "+", trend_list[[trend]], "|fips") %>% formula()
 
+  print(y)
+  print(id)
 
   #--- run regressions ---#
   if (weight != "none") {
@@ -83,7 +83,6 @@ reg <- function(crop, period, weight, cluster, trend, weather, id) {
     tidy() %>%
     filter(term == "hdd")
 }
-
 
 
 # run regression and store results ----------------------------------------

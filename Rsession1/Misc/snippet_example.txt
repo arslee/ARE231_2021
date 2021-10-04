@@ -1,0 +1,68 @@
+snippet sec
+	# ${1: section}  -------------------------------------
+
+snippet ssec
+	## ${1: subsection}  -------------------------------------
+
+snippet sssec
+	### ${1: subsubsection} -------------------------------------
+
+snippet ssssec
+	#### ${1: subsubsubsection}  -------------------------------------
+
+
+snippet info
+	#---------------[   Purpose    ]--------------------
+	#
+	# ${1:purpose}
+	#
+	#---------------[   Sys Info   ]--------------------
+	#
+	`r paste0("#  Date  : ", date(),"\n",
+					  "#  Author: ", Sys.info()[["user"]],"\n",
+					  "#  OS    : ", Sys.info()[["sysname"]],"\n",
+	  				"#  Node  : ", Sys.info()[["nodename"]])`
+	#
+	#---------------[ Pinned Notes ]--------------------
+	#
+	# ${2:important stuff}
+	#
+	#---------------[   Process    ]--------------------
+	${3:start processing}
+
+
+snippet input
+	#----@ input: ${1:input} @----
+
+snippet output
+	#----@ output: ${1:output} @----
+	
+snippet note
+	#----@ note: ${1:note} @----
+
+snippet plot
+	#----@ plot: ${1:plot} @----
+	
+
+
+snippet head
+
+	############## Documentation ##################
+	#==========[       Purpose         ]==========# 
+	#
+	#==========[       Inputs          ]==========#                   
+	#
+	#==========[       Process         ]==========#
+	#
+	#==========[       Outputs         ]==========#
+	#
+	#==========[        Notes          ]==========#
+
+
+snippet aa
+	#####===== ${0} =====#####
+snippet bb
+	#--- ${0} ---#
+
+snippet cc
+	#....${0}....#

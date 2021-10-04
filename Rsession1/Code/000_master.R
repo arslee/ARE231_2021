@@ -3,9 +3,12 @@ rm(list = ls())
 
 # set directory
 if (Sys.info()[["nodename"]] == "DESKTOP-8FJP3KC") {
-  setwd("C:/Users/Seunghyun Lee/Dropbox/Teaching/ARE231/Rsession1/")
+  setwd("C:/Users/Seunghyun Lee/Dropbox/Teaching/ARE231_2021/Rsession1/")
+}else{
+  setwd("/Users/seunghyunlee/Dropbox/Teaching/ARE231_2021/Rsession1") 
 }
 
+getwd()
 # setup files
 source("Code/001_packages.R")
 source("Code/002_functions.R")
