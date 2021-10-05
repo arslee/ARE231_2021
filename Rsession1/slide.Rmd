@@ -1,0 +1,83 @@
+---
+title: "Applied Economics Research using R: Session 1"
+author: "Seunghyun Lee (arslee@ucdavis.edu)"
+date: "10/4/2021"
+output: beamer_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, fig.align ="center")
+```
+
+## Intro
+
+- Research requires many things.
+- Coding is a not sufficient but necessary and essential skill set for research.
+- Curse of abundance
+  * Data
+  * Programming Languages
+  * Methodologies
+- Too much information is no information
+
+\begin{center}
+    \includegraphics[width=.5\linewidth]{info overload.jpg}
+\end{center}
+So, where should we go and how?
+
+## What was your coding experience like ?
+
+\begin{center}
+    \includegraphics[width=.5\linewidth]{coding.jpeg}
+\end{center}
+
+## Mine was like..
+
+\begin{columns}
+  \begin{column}{.45\linewidth}
+    \includegraphics[width=\linewidth]{works why.jpg}
+  \end{column}
+  \begin{column}{.45\linewidth}
+    \includegraphics[width=\linewidth]{coder.jpg}
+  \end{column}
+\end{columns}
+
+## Mindsets
+- Focus on positive experiences
+- Keep making small achievements
+- No one is born a programmer
+- Do you know how to use Google? Then you are ready to become a good programmer
+
+## Coding
+- Coding is more than executing things with some lines of code.
+- It encompasses general workflows
+  * folder/file management
+  * documentation
+  * version control
+  
+- Some important qualities are
+  * readability
+  * modifiability
+  * reproducibility
+  * efficiency (space + time)
+
+
+## Things you need to know when using R
+- R has multiple packages that do similar things.
+  * Different packages might have very different syntax styles.
+  * e.g., `base` vs `tidyverse` vs `data.table` ([*nice summary here*](https://mgimond.github.io/rug_2019_12/Index.html#subsetting-by-variable-values))
+  * In the first session, I stick to `tidyverse` style. In the second session, I will use `data.table` style.
+
+- Some packages are more reliable than others.
+  * Do some research or play around with it when you start using a new package especially if not widely used.
+  
+  
+## Start with some fun things 
+
+
+### Shortcuts
+
+### Snippets
+
+### Table of contents in R script
+
+### Formatter  

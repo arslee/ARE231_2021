@@ -60,13 +60,13 @@ extract_nass <- function(st, var) {
     agg_level_desc = "COUNTY",
     state_alpha = st,
     short_desc = var
-  ) %>% 
-  filter(year %in% par$years)
+  ) %>%
+    filter(year %in% par$years)
 }
 
 ## loop  -------------------------------------
 plan(multisession)
-df <- future_pmap(.progress=T, grid, extract_nass) %>% rbindlist(use.names = T)
+df <- future_pmap(.progress = T, grid, extract_nass) %>% rbindlist(use.names = T)
 
 
 # 2. clean -------------------------------------------------------------------
@@ -75,7 +75,7 @@ df_ya <- df %>%
   filter(county_name != "OTHER (COMBINED) COUNTIES") %>%
   distinct() %>%
   mutate(
-    Value = as.numeric(str_replace(Value, ",", "")),
+    Value = as.numeric(str_replace_all(Value, ",", "")),
     fips = as.integer(paste0(state_fips_code, county_code))
   ) %>%
   select(state_alpha, fips, year, short_desc, commodity_desc, statisticcat_desc, Value) %>%
@@ -91,5 +91,3 @@ summary(df_ya)
 # 3. export ---------------------------------------------------------------------
 #----@ output: Data/Processed/df_ya.rds @----
 saveRDS(df_ya, "Data/Processed/df_ya.rds")
-
-
