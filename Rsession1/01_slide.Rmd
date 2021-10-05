@@ -3,6 +3,7 @@ title: "Applied Economics Research using R: Session 1"
 author: "Seunghyun Lee (arslee@ucdavis.edu)"
 date: "10/4/2021"
 output: beamer_presentation
+urlcolor: blue
 ---
 
 ```{r setup, include=FALSE}

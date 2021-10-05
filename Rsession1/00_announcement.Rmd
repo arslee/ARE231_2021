@@ -12,6 +12,7 @@ output:
     # toc_float: true
     #code_folding: hide
     # number_sections: true  ## if you want number sections at each table header
+urlcolor: blue
 ---
 
 ```{r setup, include=FALSE}
