@@ -3,6 +3,9 @@ title: "Applied Economics Research using R: Session 1 - announcement"
 author: "Seunghyun Lee (arslee@ucdavis.edu)"
 date: "9/25/2021"
 output:
+  pdf_document:
+    toc: yes
+    number_sections: yes
   html_document:
     theme: yeti
     # toc: true

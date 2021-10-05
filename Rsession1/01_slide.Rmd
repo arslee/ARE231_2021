@@ -20,24 +20,24 @@ knitr::opts_chunk$set(echo = FALSE, fig.align ="center")
 - Too much information is no information
 
 \begin{center}
-    \includegraphics[width=.5\linewidth]{info overload.jpg}
+    \includegraphics[width=.5\linewidth]{Img/info overload.jpg}
 \end{center}
 So, where should we go and how?
 
 ## What was your coding experience like ?
 
 \begin{center}
-    \includegraphics[width=.5\linewidth]{coding.jpeg}
+    \includegraphics[width=.5\linewidth]{Img/coding.jpeg}
 \end{center}
 
 ## Mine was like..
 
 \begin{columns}
   \begin{column}{.45\linewidth}
-    \includegraphics[width=\linewidth]{works why.jpg}
+    \includegraphics[width=\linewidth]{Img/works why.jpg}
   \end{column}
   \begin{column}{.45\linewidth}
-    \includegraphics[width=\linewidth]{coder.jpg}
+    \includegraphics[width=\linewidth]{Img/coder.jpg}
   \end{column}
 \end{columns}
 
