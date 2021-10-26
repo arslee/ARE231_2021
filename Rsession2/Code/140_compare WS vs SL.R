@@ -11,7 +11,7 @@
 #
 #---------------[ Pinned Notes ]--------------------
 #
-# 
+#
 #
 #---------------[   Process    ]--------------------
 
@@ -55,9 +55,9 @@ df_plot %>%
     axis.text = element_text(size = 25),
     axis.text.x = element_text(size = 20),
     axis.text.y = element_text(size = 20),
-    axis.title = element_text(size = 40, face = "bold"),
+    axis.title = element_text(size = 30, face = "bold"),
     strip.text = element_text(size = 20),
-    plot.title = element_text(hjust = 0.5)
+    plot.title = element_text(hjust = 0.5,size = 40)
   ) +
   ggtitle("WS vs SL: Monthly Weather Data for 2019")
 
