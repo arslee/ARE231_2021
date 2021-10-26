@@ -24,13 +24,11 @@ knitr::opts_chunk$set(echo = TRUE, cache = TRUE, warning = FALSE, message = FALS
 This document includes some pieces (R codes + figure) that you may find useful when constructing county-level data for degree days. The codes in this document are intended to be illustrative. As mentioned in the class, the tricky part is constructing a cropland weighting layer on the PRISM grid cells. I included this part in the exercise not because I presume you will frequently do this but because it illustrates the point that some geosptial operations could be specific to data type. If you need some geospatial operations that are allowed only for the data type you don't have, you might need to convert your data type. 
 
 
-The three codes below generalizes the small pieces included in this document to create the daily county-level weather data in 2019 and 2020 for all the counties in the Contiguous US. Constructed weather variables include precipitation, and degree days above 0, 5, 8, 10, 12, 15, 20, 25, 29, 30, 31, 32, 33 and 34 degree Celsius. 
-
+The scripts below generalizes the small pieces included in this document to create the daily county-level weather data in 2019 and 2020 for all the counties in the Contiguous US. Constructed weather variables include precipitation, and degree days above 0, 5, 8, 10, 12, 15, 20, 25, 29, 30, 31, 32, 33 and 34 degree Celsius. Note that in the last two scripts I use `data.table` more extensively than in the class. `data.table` is powerful when dealing with a large dataset.
 
 
 ```{r}
-list.files("Code/", pattern = "^1")
-
+list.files("Code/", pattern = "^1") %>% sort()
 ```
 
 The figure below shows a comparison between my weather data and Professor Schlenker's for 2019 at the county-by-month level. Because of different choices we made in the process of data construction, there are some differences. 
@@ -192,7 +190,7 @@ plot(il_crop_R)
     
     
 
-# Calculating county-level temperatures 
+# Calculate county-level temperatures 
 ```{r, results='hide'}
 prism_S <- mask(prism_S, prism_P)
 
@@ -210,6 +208,10 @@ il_prism <-
 ```{r,  class.output="scroll"}
 names(il_prism)
 ```
+
+
+# Clean data + Calculate degree days above 30C
+
 
 ```{r}
 
