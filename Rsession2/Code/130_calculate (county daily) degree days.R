@@ -18,7 +18,7 @@
 
 ## Load county-level temperature data  -------------------------------------
 #----@ input:  Data/prism_co/temperatures/@----
-df_dday <- list.files("Data/Processed/prism_co/temperatures/", full.names = T, ) %>%
+df_temp <- list.files("Data/Processed/prism_co/temperatures/", full.names = T, ) %>%
   lapply(readRDS) %>%
   rbindlist() %>%
   na.omit()
@@ -26,16 +26,25 @@ df_dday <- list.files("Data/Processed/prism_co/temperatures/", full.names = T, )
 ## Calculate degree days by thresholds  -------------------------------------
 thresholds <- c(0, 5, 8, 10, 12, 15, 20, 25, 29, 30, 31, 32, 33, 34)
 
-df_dday[, tAvg := (tmin + tmax) / 2]
-df_dday[, fips := as.integer(GEOID)]
-df_dday[, GEOID := NULL]
+df_temp[, tAvg := (tmin + tmax) / 2]
+df_temp[, fips := as.integer(GEOID)]
+df_temp[, GEOID := NULL]
 
-df_dday[, paste0("dday", thresholds, "C") := map(thresholds, function(thr) {
-  degree_days(tmin, tmax, thr, 100) %>% as.numeric()
-})][]
+plan(multisession)
+df_dday <- future_map_dfc(.progress = T, thresholds, function(thr) {
+  dday <- data.table(v = pmap_dbl(
+    list(df_temp$tmin, df_temp$tmax),
+    function(tmin, tmax) {
+      degree_days(tmin, tmax, thr, 100)
+    }
+  ))
+  setnames(dday, "v", paste0("dday", thr, "C"))
+})
 
+df_dday <- cbind(df_temp, df_dday)
 setnames(df_dday, c("tmax", "tmin", "ppt"), c("tMax", "tMin", "prec"))
-setcolorder(df_dday, c("fips","year"))
+setcolorder(df_dday, c("fips", "year"))
+
 
 #----@ output: Data/daily_dday_2019_2020.csv @----
 

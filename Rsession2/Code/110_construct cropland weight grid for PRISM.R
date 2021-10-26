@@ -67,7 +67,7 @@ names(crop_R) <- "PRISM_grid_cropland"
 
 
 ## Visualize  -------------------------------------
-png("PRISM_grid_cropland", width = 1000 * 2, height = 1000, pointsize = 35)
+png("PRISM_grid_cropland.png", width = 1000 * 2, height = 1000, pointsize = 35)
 
 plot(crop_R,
   main = "Fraction of crop + pasture land in PRISM gridcell",

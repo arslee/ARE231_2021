@@ -42,7 +42,7 @@ df_monthlyWS <- fread("Data/Raw/monthlyGDD_WS.csv")[year == 2019, ][, year := NU
 setnames(df_monthlyWS, "value", "valueWS")
 
 
-#--- plot ---#
+# Plot --------------------------------------------------------------------
 df_plot <- df_monthlySL[df_monthlyWS, on = c("fips", "month", "variable")][, .(valueSL, valueWS, variable)]
 
 df_plot %>%
@@ -55,8 +55,9 @@ df_plot %>%
     axis.text = element_text(size = 25),
     axis.text.x = element_text(size = 20),
     axis.text.y = element_text(size = 20),
-    axis.title = element_text(size = 25, face = "bold"),
-    strip.text = element_text(size = 20)
+    axis.title = element_text(size = 40, face = "bold"),
+    strip.text = element_text(size = 20),
+    plot.title = element_text(hjust = 0.5)
   ) +
   ggtitle("WS vs SL: Monthly Weather Data for 2019")
 

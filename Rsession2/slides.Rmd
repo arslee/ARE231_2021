@@ -9,7 +9,7 @@ urlcolor: blue
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = T,fig.ncol = 2, fig.align = "left", cache=T, cache.lazy = F, out.height = ".3\\textheight")
+knitr::opts_chunk$set(echo = T, fig.ncol = 2, fig.align = "left", cache=T, cache.lazy = F, out.height = ".3\\textheight")
 library(raster)
 library(tigris)
 library(sf)
@@ -26,9 +26,7 @@ select <- dplyr::select
 ## Issue
 
 -   We need to pay some fixed costs.
-
 -   There are too much stuff out there.
-
 -   To beginners, things may look overwhelming.
 
 ```{=tex}
