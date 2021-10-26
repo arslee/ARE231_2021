@@ -27,7 +27,7 @@ df_SL <- fread("Data/Processed/daily_dday_2019_2020.csv")
 df_monthlySL_ddayprec <- df_SL[year == 2019, lapply(.SD, sum, na.rm = T), .SDcols = patterns("dday|prec"), .(fips, month)] %>%
   melt(id.vars = c("fips", "month"))
 
-df_monthlySL_temp <- df_dday[year == 2019, lapply(.SD, mean, na.rm = T), .SDcols = patterns("tM|tA"), .(fips, month)] %>%
+df_monthlySL_temp <- df_SL[year == 2019, lapply(.SD, mean, na.rm = T), .SDcols = patterns("tM|tA"), .(fips, month)] %>%
   melt(id.vars = c("fips", "month"))
 
 df_monthlySL <- rbind(df_monthlySL_ddayprec, df_monthlySL_temp)
