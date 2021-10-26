@@ -64,7 +64,7 @@ source("Code/002_functions.R")
 
 ## Load PRISM data
 ```{r}
-file_list <- list.files("Data/prism/",
+file_list <- list.files("Data/Raw/prism/",
                         full.names = T,
                         pattern = "t.*2019071.*bil$", 
                         recursive = TRUE) %>% 
@@ -94,7 +94,7 @@ plot(il_cb[, "geometry"])
 ## Load land cover data
 
 ```{r,  class.output="scroll"}
-nlcd_R <- raster("Data/nlcd_2019_land_cover_l48_20210604/nlcd_2019_land_cover_l48_20210604.img")
+nlcd_R <- raster("Data/Raw/nlcd_2019_land_cover_l48_20210604/nlcd_2019_land_cover_l48_20210604.img")
 
 nlcd_R
 plot(nlcd_R)
@@ -137,7 +137,7 @@ plot(prism_P[, "geometry"])
     
 ## Extract land cover values for each PRISM cell
 ```{r, results='hide'}
-prism_P$nlcd <- exactextractr::exact_extract(nlcd_R, prism_P)
+prism_P$nlcd <- exact_extract(nlcd_R, prism_P)
 ```
 
 ```{r}

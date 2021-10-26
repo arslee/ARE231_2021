@@ -61,7 +61,7 @@ select <- dplyr::select
 
     -   Do some geocomputation
 
-        -   Creating gridded data by interpolating point data
+        -   creating gridded data by interpolating point data
         -   constructing field-level crop choice data
         -   constructing county-level weather data
 
@@ -83,7 +83,7 @@ select <- dplyr::select
 
 -   Again, there are often multiple packages that do similar things
 -   Different packages may require different syntax
--   Checking compatibility between packages sometimes is annoying
+-   Checking compatibility between packages is sometimes annoying
 
 ## Data types
 
@@ -142,7 +142,7 @@ R
 Let's consider another matrix.
 
 ```{r, include=F}
-R <- raster("Data/cdl/CDL_2020_06.tif")
+R <- raster("Data/Raw/cdl/CDL_2020_06.tif")
 crsR <- attributes(R)$crs
 legendR <- attributes(R)$legend
 extentR <- attributes(R)$extent
@@ -184,14 +184,16 @@ This is CDL for California in 2020 at 30mx30m resolution.
 
 ## Raster in R
 
-You can stack $2D$ raster and create $3D$ raster. This is called raster stack. What Google Earth Engine is specialized in is pixel-level processing.
+You can stack $2D$ raster layers to create a $3D$ raster. This is called raster stack. What Google Earth Engine is specialized in is pixel-level processing.
 
 ## Vector data in R
 
 Consider a data frame.
 
 ```{r, include=F}
-V <- counties() %>% filter(STATEFP=="06") %>% select(GEOID,NAME,ALAND)
+V <- counties() %>% 
+  filter(STATEFP=="06") %>%
+  select(GEOID,NAME,ALAND)
 geometry <- V[,"geometry"] 
 V <- st_drop_geometry(V)
 ```
@@ -215,7 +217,8 @@ nrow(geometry)==nrow(V)
 Let's bind two set of information and convert to \textit{sf} (simple feature) class.
 
 ```{r}
-V <- cbind(V,geometry) %>% st_as_sf() 
+V <- cbind(V,geometry) %>% 
+  st_as_sf() 
 plot(V[,"ALAND"])
 ```
 
@@ -225,8 +228,8 @@ plot(V[,"ALAND"])
 
 ```{r}
 V %>% 
-  filter(NAME=="Yolo") %>% 
-  mutate(NAME=toupper(NAME))
+  filter(NAME == "Yolo") %>%
+  mutate(NAME = toupper(NAME))
 
 ```
 
@@ -309,7 +312,7 @@ Masking does not include pixels if pixel centroids fall outside the boundary. Yo
 
 ```{r}
 library(exactextractr)
-V <- V %>% mutate(allR=exactextractr::exact_extract(R,V))
+V <- V %>% mutate(allR = exact_extract(R, V))
 
 ```
 
@@ -329,10 +332,10 @@ V$allR <- NULL
 ## Extracting (mode)
 
 ```{r}
-cropcode <- readRDS("Data/cropcode.rds")
-V <- V %>% 
-  mutate(mode = exactextractr::exact_extract(R, V, "mode")) %>% 
-  left_join(cropcode, by=c("mode"="MasterCat")) %>%
+cropcode <- readRDS("Data/Raw/cropcode.rds")
+V <- V %>%
+  mutate(mode = exact_extract(R, V, "mode")) %>%
+  left_join(cropcode, by = c("mode" = "MasterCat")) %>%
   st_drop_geometry()
 V[,c("NAME","Crop")]
 ```
