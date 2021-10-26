@@ -33,7 +33,10 @@ list.files("Code/", pattern = "^1") %>% sort()
 
 
 The figure below shows spatial variation in the share of cropland (cultivated crop + hay/pasture from NLCD 2019) on the PRISM grids across the US. 
+<left>
+
 ![](Figure/PRISM_grid_cropland.png)
+</left>
 
 The figure below shows a comparison between my weather data and Professor Schlenker's for 2019 at the county-by-month level. Because of different choices we made in the process of data construction, there are some differences. 
 
