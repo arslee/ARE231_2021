@@ -1,6 +1,11 @@
+---
+output:
+  github_document:
+    pandoc_args: --webtex
+---
 
 This repository contains codes, slides, and other documents that I have
-used for a crash course on applied economics research using R. The
+used for a crash course on applied economics research using R in 2021 Fall. The
 course is taught in ARE231-Agricultural Demand and Supply, a 2nd-year
 PhD course at UC Davis. ARE231 is taught jointly by Aaron Smith and
 Timothy Beatty. As a guest lecturer, I held two sessions, each of which
@@ -19,7 +24,7 @@ temperature data using weather data from the PRISM and landcover data
 from National Land Cover Database (NLCD).
 
 <center>
-------------**mini research project**---------------
+------------mini research project---------------
 </center>
 
 We are going to run the following panel regression of crop yields for
@@ -43,7 +48,7 @@ more about the methodology and other related ones later in the course in
 more detail.
 
 **I do encourage you to spend some time trying to implement the
-following steps**, although I will walk through them in the session
+following steps**, although I will walk through them in the session.
 
 It is totally ok even if you do not make much progress. But, I would
 like you to at least try each step so that you can make most out of my
