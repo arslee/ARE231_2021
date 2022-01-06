@@ -1,9 +1,8 @@
+# Crash Course on Applied Economics Research using R
 
 This repository contains codes, slides, and other documents that I have
-used for a crash course on applied economics research using R in 2021
-Fall. The course is taught in ARE231-Agricultural Demand and Supply, a
-2nd-year PhD course at UC Davis. ARE231 is taught jointly by Aaron Smith
-and Timothy Beatty. As a guest lecturer, I held two sessions, each of
+used as a guest lecturer for ARE231 Agricultural Demand and Supply at UC Davis in 2021
+Fall, a 2nd-year PhD course. ARE231 is taught jointly by Timothy Beatty and Aaron Smith. I held two sessions, each of
 which took around one and half hours.
 
 In the first session, I covered coding mindset, useful features of
@@ -15,8 +14,8 @@ and codes for the mini project.
 In the second session, I taught how to use R for spatial data analysis.
 I spent about an hour about how to use R as a GIS tool. In the last half
 hour, I went through how to construct cropland-weighted county-level
-temperature data using weather data from the PRISM and landcover data
-from National Land Cover Database (NLCD).
+temperature data using gridded weather data from the PRISM Climate Group and landcover data
+from the National Land Cover Database (NLCD).
 
 <center>
 ————mini research project—————
